@@ -7,5 +7,5 @@ For INST377 me and my group member @Carter decided to create a web application t
 
 ## Developers
 
-- [@l3erkt](https://www.github.com/octokatherine)
+- [@l3erkt](https://github.com/l3erkt)
 - [@smallfrycode](https://github.com/smallfrycode)
