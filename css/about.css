@@ -1,0 +1,19 @@
+#main_content {
+    display: inline;
+    text-align: center;
+    float: left;
+    width: 100%;
+    height: 100%;
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
+#main_content h1 {
+    font-size: 54px;
+    font-weight: 800;
+    color: rgb(149, 173, 237);
+}
+
+#main_content p {
+    font-size: 18px;
+}
