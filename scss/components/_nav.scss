@@ -1,0 +1,94 @@
+
+// Navigation bar styles
+nav {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 30px 0px;
+}
+
+
+
+// Link styles
+
+.logo {
+    width: 60px;
+    height: 60px;
+}
+
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    font-size: var(--fs-md);
+}
+
+.nav-links a{
+    font-weight: bold;
+    transition: 0.3s;
+}
+.nav-links a:hover {
+    color: lightskyblue; 
+    
+}
+
+
+// Search bar styles
+
+.src-form{
+    background-color: rgb(30, 31, 33);
+    padding: 12px 50px 12px 10px;
+    border-radius: 50px;
+}
+
+.src-bar {
+    display: flex;
+    gap: 5px;
+    border-radius: 50px;
+}
+
+.src-img {
+    width: 20px;
+    height: 20px;
+}
+
+.src-input {
+    background-color: rgb(30, 31, 33);    
+    border: none;
+    outline: none;
+    font-size: var(--fs-sm);
+    color: var(--secondary-color);
+}
+
+
+.burger-btn {
+    display: none;
+}
+
+
+
+
+@media screen and (max-width: 48em) {
+// Link styles
+
+nav {
+    padding: 15px 5px 0px;
+}
+
+.nav-links {
+    display: none;
+}
+
+// burger tab for iphone and tablet users
+.burger-btn {
+    width: 40px;
+    height: 40px;
+    display: block;
+    
+}
+}
+
+
+

@@ -1,0 +1,31 @@
+:root {
+    --primary-color: #d9d9d9; // headers
+    --secondary-color: #b2b2b2; // paragraphs, navlinks, 
+
+    --blue-color: lightskyblue; // alternative color
+    --green-color: #00550d; // Readnow btn
+    --orange-color: #904401; // Watchnow btn
+
+    --bkg-color-primary: #111315; // main background
+
+    --fs-logo: 80px;
+
+
+    // Header
+    --fs-h1: 3.5rem;
+
+    // Content based sizes
+    --fs-lg: 3.2rem;
+    --fs-md: .95rem;
+    --fs-sm: 0.8rem;
+
+    --ff-primary: "Poppins", sans-serif;
+    --ff-secondary: "Mulish", sans-serif;
+
+}
+
+@media screen and (max-width: 48em) {
+
+
+    
+}
