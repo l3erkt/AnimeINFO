@@ -9,8 +9,10 @@ main {
 
 .card {
     position: relative;
-    width: 850px;
-    height: 500px;
+    width: 80%;
+    height: 90%;
+    max-width: 1050px;
+    max-height: 650px;
     display: flex;
     background-image: url(../images/bkg-img-geto.png);
     background-size: cover;
@@ -130,8 +132,11 @@ main {
 @media screen and (max-width: 48em) {
 
     .card {
-    width: 300px;
-    height: 300px;
+    min-width: 300px;
+    width: 80%;
+    height: 100%;
+    max-width: 600px;
+    max-height: 350px;
     display: flex;
     justify-content: center;
     flex-direction: column;
