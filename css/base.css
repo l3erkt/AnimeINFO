@@ -33,6 +33,7 @@
 html,
 body {
   height: 100%;
+  height: 100%;
   
 }
 
@@ -48,6 +49,8 @@ body {
   font-family: var(--ff-primary);
   background: var(--bkg-linear-gradient-primary);
   color: var(--primary-color);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   
   
 }
