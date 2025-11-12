@@ -1,12 +1,15 @@
 const container = document.getElementById('container')
+const apiUrl = "http://api.anidb.net:9001/httpapi?request=hotanime&client=oniichan&clientver=1&protover=1&aid=1";
+const proxyUrl = "https://api.allorigins.win/get?url=" + encodeURIComponent(apiUrl);
 
-api = `http://api.anidb.net:9001/httpapi?request=hotanime&client=oniichan&clientver=1&protover=1&aid=1`
 
-fetch(api)
-  .then(res => res.text())
-  .then(data => {
 
-    const xml = new DOMParser().parseFromString(data, "application/xml");
+fetch(proxyUrl)
+  .then(res => res.json())
+
+  .then(result => {
+  
+    const xml = new DOMParser().parseFromString(result.contents, "application/xml");
     const animes = [...xml.getElementsByTagName("anime")].map(anime => {
       const obj = {
         id: anime.getAttribute("id"),
@@ -35,7 +38,7 @@ fetch(api)
 
       const img = document.createElement('img')
       img.className = 'cover'
-      /*img.src = `DOSENT WORK...`;*/
+      img.src = `https://cdn.anidb.net/images/main/${animes[i].picture}`
 
 
 
