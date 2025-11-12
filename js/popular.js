@@ -1,3 +1,5 @@
+const container = document.getElementById('container')
+
 api = `http://api.anidb.net:9001/httpapi?request=hotanime&client=oniichan&clientver=1&protover=1&aid=1`
 
 fetch(api)
@@ -27,6 +29,52 @@ fetch(api)
       return obj;
     });
 
-    console.log(animes);
+    for (i=0; i<10; i++) {
+      const show = document.createElement('div')
+      show.className = "show"
+
+      const img = document.createElement('img')
+      img.className = 'cover'
+      /*img.src = `DOSENT WORK...`;*/
+
+
+
+      const showInfo = document.createElement('div')
+      showInfo.className = 'show-info'
+
+      const title = document.createElement('h3')
+      title.className = 'title'
+      title.textContent = `${animes[i].title.slice(0, 13)}`
+
+      const sub = document.createElement('p')
+      sub.className = 'sub'
+      sub.textContent = `${animes[i].episodecount} Episodes`
+
+      const ratingDiv = document.createElement('div')
+      ratingDiv.className = 'rating'
+
+      const starImg = document.createElement('img')
+      starImg.className = 'star'
+      starImg.src = '../images/star.png'
+
+      const rate = document.createElement('p')
+      rate.textContent = `${animes[i].ratings.permanent.value} / 10`
+
+      ratingDiv.appendChild(starImg)
+      ratingDiv.appendChild(rate)
+
+      showInfo.appendChild(title)
+      showInfo.appendChild(sub)
+      showInfo.appendChild(ratingDiv)
+
+      show.appendChild(img)
+      show.appendChild(showInfo)
+      
+      container.appendChild(show)
+      console.log(animes[i])
+
+    }
+
+    
   })
   .catch(err => console.error("Error:", err));
