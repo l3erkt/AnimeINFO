@@ -1,13 +1,14 @@
 main {
     width: 100%;
-    height: 80vh;
+    height: 85vh;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: space-evenly;
     align-items: center;
 }
 
 
-.card {
+.hero {
     position: relative;
     width: 80%;
     height: 90%;
@@ -24,7 +25,7 @@ main {
     box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
 }
 
-.card::before {
+.hero::before {
   content: "";
   position: absolute;
   inset: 0; 
@@ -34,7 +35,7 @@ main {
   border-radius: 50px;
 }
 
-.card * {
+.hero * {
   position: relative;
   z-index: 1; /* text stays above overlay */
 }
@@ -131,7 +132,9 @@ main {
 
 @media screen and (max-width: 48em) {
 
-    .card {
+    
+
+    .hero {
     min-width: 300px;
     width: 80%;
     height: 100%;
