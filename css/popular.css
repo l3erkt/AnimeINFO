@@ -1,8 +1,8 @@
 main {
     display: flex;
     align-items: center;
-    padding: 50px 0;
-    gap: 2rem;
+    padding: 50px 50px;
+    gap: 5rem;
     flex-wrap: wrap;
     justify-content: center;
 }
@@ -48,11 +48,15 @@ main {
 
 @media screen and (max-width: 48em) {
 
+    main {
+    gap: 2rem;
+    }
+
     .cover {
     width: 100px;
     min-width: 75px;
     height: 125px;
     min-height: 100px;
-}
+    }
 
 }
