@@ -1,8 +1,8 @@
-const api = `https://api.jikan.moe/v4/top/anime`
+const topAnime = `https://api.jikan.moe/v4/top/anime`;
 const container = document.getElementById('container');
 
 
-fetch(api)
+fetch(topAnime)
   .then(res => res.json())
   .then(animes => {
 

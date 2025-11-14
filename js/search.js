@@ -1,5 +1,3 @@
-const API = "";
-
 function search(e) {
     e.preventDefault();
 
