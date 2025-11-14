@@ -1,7 +1,7 @@
 main {
     display: flex;
     align-items: center;
-    padding: 50px 50px;
+    padding: 75px 50px;
     gap: 5rem;
     flex-wrap: wrap;
     justify-content: center;

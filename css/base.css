@@ -12,10 +12,10 @@
     --fs-logo: 80px;
 
     /* Header */
-    --fs-h1: 3.5rem;
+    --fs-h1: 2rem;
 
     /* Content based sizes */
-    --fs-lg: 2rem;
+    --fs-lg: 1.5rem;
     --fs-md: 0.95rem;
     --fs-sm: 0.8rem;
 
@@ -96,12 +96,12 @@ a {
 @media screen and (max-width: 48em) {
   :root {
       /* Header */
-      --fs-h1: 3.5rem;
+      --fs-h1: 1.5rem;
 
       /* Content based sizes */
       --fs-lg: 1rem;
-      --fs-md: 0.8rem;
-      --fs-sm: 0.6rem;
+      --fs-md: 0.7rem;
+      --fs-sm: 0.5rem;
 
 
       --fs-logo: 25px;

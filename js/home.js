@@ -1,4 +1,6 @@
 const animeSearch = `https://api.jikan.moe/v4/anime?sfw=${encodeURIComponent(true)}`;
+const container = document.getElementById('container')
+
 
 function getRandomInt(max) {
     return Math.floor(Math.random() * max);
@@ -10,66 +12,82 @@ function loadRandomAnime() {
     fetch(animeSearch)
         .then(res => res.json())
         .then(animes => {
-            console.log(animes.data);
-
             const chosenAnime = animes.data[getRandomInt(animes.data.length)]
             console.log(chosenAnime);
 
-            // Main divider
-            const show = document.createElement('div');
-            show.className = "show";
+            const row1 = document.createElement('section')
+            row1.className = 'row-1'
 
-            const img = document.createElement('img');
-            img.className = 'cover';
-            img.src = `${chosenAnime.images.jpg.large_image_url}`;
-            img.setAttribute('max-height', '300');
-            img.setAttribute('max-width', '300');
+            const col1 = document.createElement('div')
+            col1.className = 'col-1'
 
+            const genre = document.createElement('p')
+            genre.className = 'genre'
+            for (let i=0; i < chosenAnime.genres.length; i++) {
+                genre.textContent += `${chosenAnime.genres[i]}, `
+            }
 
-            // Info divider
-            const showInfo = document.createElement('div');
-            showInfo.className = 'show-info';
+            const title = document.createElement('h1')
+            title.className = 'title'
+            title.textContent = `${chosenAnime.title}`
 
-            const title = document.createElement('h3');
-            title.className = 'title';
-            title.textContent = `${chosenAnime.title}`;
+            const info = document.createElement('p')
+            info.className = 'info'
+            info.textContent = `${chosenAnime.synopsis}`
 
-            const ep = document.createElement('p');
-            ep.className = 'ep';
-            ep.textContent = `Episodes: ${chosenAnime.episodes}`;
+            const idk = document.createElement('div')
+            idk.className = 'idk'
 
-            const rate = document.createElement('p');
-            rate.className = "rate";
-            rate.textContent = `Rating: ${chosenAnime.rating}`;
+            const btn = document.createElement('div')
+            btn.className = 'btn'
+            const blueBtn = document.createElement('button')
+            blueBtn.className = 'blue-btn'
+            blueBtn.textContent = 'Read Now'
+            const blackBtn = document.createElement('button')
+            blackBtn.className = 'black-btn'
+            blackBtn.textContent = 'Watch Now'
 
+            const rating = document.createElement('div')
+            rating.className = 'rating'
+            const star = document.createElement('img')
+            star.className = 'star'
+            star.src = '../images/star.png'
+            const score = document.createElement('p')
+            score.className = 'rate'
+            score.textContent = `${chosenAnime.score} / 10`
 
-            // Add elements to container (order matters)
-            showInfo.appendChild(title);
-            showInfo.appendChild(document.createElement('br'));
-            showInfo.appendChild(rate);
-            showInfo.appendChild(document.createElement('br'));
-            showInfo.appendChild(ep);
-            showInfo.appendChild(document.createElement('br'));
+            const cover = document.createElement('img')
+            cover.className = 'cover'
+            cover.src = `${chosenAnime.images.jpg.large_image_url}`
 
-            show.appendChild(img);
-            show.appendChild(showInfo);
-            
-            container.appendChild(show);
+            btn.appendChild(blueBtn)
+            btn.appendChild(blackBtn)
+            rating.appendChild(star)
+            rating.appendChild(score)
+            idk.appendChild(btn)
+            idk.appendChild(rating)
 
+            col1.appendChild(genre)
+            col1.appendChild(title)
+            col1.appendChild(info)
+            col1.appendChild(idk)
+
+            row1.appendChild(col1)
+            row1.appendChild(cover)
+
+            container.appendChild(row1)
 
             // Trailer
             if (chosenAnime.trailer.embed_url) {
-                const trailerDiv = document.createElement('div');
-                trailerDiv.className = "show-trailer-div";
+                const row2 = document.createElement('div');
+                row2.className = 'row-2'
+                const trailer = document.createElement('iframe');
+                trailer.className = 'trailer';
 
-                const showTrailer = document.createElement('iframe');
-                showTrailer.className = 'show-trailer';
-                showTrailer.setAttribute('width', '560');
-                showTrailer.setAttribute('height', '315');
-                showTrailer.setAttribute('src', `${chosenAnime.trailer.embed_url}`);
+                trailer.setAttribute('src', `${chosenAnime.trailer.embed_url}`);
 
-                trailerDiv.appendChild(showTrailer);
-                showInfo.appendChild(trailerDiv);
+                row2.appendChild(trailer)
+                container.appendChild(row2)
             }
     });
 }
