@@ -1,55 +1,29 @@
+const api = `https://api.jikan.moe/v4/top/anime`
 const container = document.getElementById('container');
-const apiUrl = "http://api.anidb.net:9001/httpapi?request=hotanime&client=oniichan&clientver=1&protover=1&aid=1";
-const proxyUrl = "https://api.allorigins.win/get?url=" + encodeURIComponent(apiUrl);
 
 
-
-fetch(proxyUrl)
+fetch(api)
   .then(res => res.json())
+  .then(animes => {
 
-  .then(result => {
-  
-    const xml = new DOMParser().parseFromString(result.contents, "application/xml");
-    const animes = [...xml.getElementsByTagName("anime")].map(anime => {
-      const obj = {
-        id: anime.getAttribute("id"),
-        restricted: anime.getAttribute("restricted"),
-      };
-
-      for (const child of anime.children) {
-        if (child.tagName === "ratings") {
-          obj.ratings = {};
-          for (const rate of child.children) {
-            obj.ratings[rate.tagName] = {
-              count: rate.getAttribute("count"),
-              value: rate.textContent.trim(),
-            };
-          }
-        } else {
-          obj[child.tagName] = child.textContent.trim();
-        }
-      }
-      return obj;
-    });
-
-    for (i=0; i<10; i++) {
+    for (i=0; i<animes.data.length; i++) {
       const show = document.createElement('div');
       show.className = "show";
 
       const img = document.createElement('img');
       img.className = 'cover';
-      img.src = `https://cdn.anidb.net/images/main/${animes[i].picture}`;
+      img.src = `${animes.data[i].images.jpg.large_image_url}`;
 
       const showInfo = document.createElement('div');
       showInfo.className = 'show-info';
 
       const title = document.createElement('h3');
       title.className = 'title';
-      title.textContent = `${animes[i].title.slice(0, 13)}`;
+      title.textContent = `${animes.data[i].title}`;
 
       const sub = document.createElement('p');
       sub.className = 'sub';
-      sub.textContent = `${animes[i].episodecount} Episodes`;
+      sub.textContent = `Episode ${animes.data[i].episodes}`;
 
       const ratingDiv = document.createElement('div');
       ratingDiv.className = 'rating';
@@ -59,7 +33,7 @@ fetch(proxyUrl)
       starImg.src = '../images/star.png';
 
       const rate = document.createElement('p');
-      rate.textContent = `${animes[i].ratings.permanent.value} / 10`;
+      rate.textContent = `${animes.data[i].score} / 10`;
 
       ratingDiv.appendChild(starImg);
       ratingDiv.appendChild(rate);
@@ -72,10 +46,5 @@ fetch(proxyUrl)
       show.appendChild(showInfo);
       
       container.appendChild(show);
-      console.log(animes[i]);
-
     }
-
-    
   })
-  .catch(err => console.error("Error:", err));
