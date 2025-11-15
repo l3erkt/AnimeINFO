@@ -67,7 +67,7 @@ async function loadRandomAnime() {
     
     // Show loading text
     const loading = document.getElementById('page-load');
-    loading.hidden = false;
+    loading.style.display = 'flex';
 
     let animeResults = await fetchAnime();
 
@@ -140,7 +140,7 @@ async function loadRandomAnime() {
     
 
         // Hide loading text
-        loading.hidden = true;
+        loading.style.display = 'none';
 
         // ADD ELEMENTS TO PAGE
         btn.appendChild(blueBtn);
