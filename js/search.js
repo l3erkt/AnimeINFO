@@ -1,15 +1,10 @@
-function search(e) {
+async function search(e) {
     e.preventDefault();
 
-    // go to search page
+    // CHANGE TO SEARCH PAGE
     const inputValue = document.getElementById("query").value;
-    const newUrl = `../pages/search.html?query=${encodeURIComponent(inputValue)}`;
-    window.location.href = newUrl;
-
-    // Implement fetch here
-
-
-    // 
+    const searchURL = `../pages/search.html?query=${encodeURIComponent(inputValue)}`;
+    window.location.href = searchURL;
 }
 
 

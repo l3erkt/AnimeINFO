@@ -6,8 +6,9 @@
     <link rel="icon" type="" href="https://img.icons8.com/?size=100&id=EFxDjlQr0y7b&format=png&color=000000">
     <link rel="stylesheet" href="../css/base.css">
     <link rel="stylesheet" href="../css/components.css">
-    <link rel="stylesheet" href="../css/hero.css">
+    <link rel="stylesheet" href="../css/anime_box.css">
     <script src="../js/search.js"></script>
+    <script type="module" src="../js/load_search.js"></script>
     <title>AnimeInfo | Search</title>
 </head>
 <body>
@@ -33,11 +34,26 @@
     </header>
 
 
-    <main>
-        <p>Search results will be listed here.</p>
-        <iframe width="560" height="315"
-            src="https://www.youtube-nocookie.com/embed/C3hVrFy459c?enablejsapi=1&wmode=opaque&autoplay=1">
-        </iframe>
+    <div id="page-load" class="loading ">
+        <img src="https://i.pinimg.com/originals/1e/db/f1/1edbf144909f2bbfcff412393422984c.gif" alt="">
+        <h3>Loading...</h3>
+    </div>
+    <main id="container">
+        <!-- SAMPLE SHOW FOR API TEST...
+        <h1>Search Results For: Tensura</h1>
+        <br>
+        <div class="show">
+            <img class="cover" src="../images/demon.png">
+            <div class="show-info">
+                <h3 class="title">Demon Slayer </h3>
+                <p class="sub">Infinity Castle</p>
+                <div class="rating">
+                    <img class="star" src="../images/star.png">
+                    <p>10 / 10</p>
+                </div>
+            </div>
+        </div>
+        --> 
     </main>
 
 

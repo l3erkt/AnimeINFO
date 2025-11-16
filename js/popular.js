@@ -1,50 +1,26 @@
-const topAnime = `https://api.jikan.moe/v4/top/anime`;
-const container = document.getElementById('container');
+import * as apiUtil from "./api_util.js";
 
 
-fetch(topAnime)
-  .then(res => res.json())
-  .then(animes => {
+async function loadPopularAnime() {
+    const container = document.getElementById('container');
 
-    for (i=0; i<animes.data.length; i++) {
-      const show = document.createElement('div');
-      show.className = "show";
+    // Show loading text
+    const loading = document.getElementById('page-load');
+    loading.style.display = 'flex';
 
-      const img = document.createElement('img');
-      img.className = 'cover';
-      img.src = `${animes.data[i].images.jpg.large_image_url}`;
+    let animes = await apiUtil.fetchAnime([apiUtil.topAnime]);
 
-      const showInfo = document.createElement('div');
-      showInfo.className = 'show-info';
-
-      const title = document.createElement('h3');
-      title.className = 'title';
-      title.textContent = `${animes.data[i].title}`;
-
-      const sub = document.createElement('p');
-      sub.className = 'sub';
-      sub.textContent = `Episode ${animes.data[i].episodes}`;
-
-      const ratingDiv = document.createElement('div');
-      ratingDiv.className = 'rating';
-
-      const starImg = document.createElement('img');
-      starImg.className = 'star';
-      starImg.src = '../images/star.png';
-
-      const rate = document.createElement('p');
-      rate.textContent = `${animes.data[i].score} / 10`;
-
-      ratingDiv.appendChild(starImg);
-      ratingDiv.appendChild(rate);
-
-      showInfo.appendChild(title);
-      showInfo.appendChild(sub);
-      showInfo.appendChild(ratingDiv);
-
-      show.appendChild(img);
-      show.appendChild(showInfo);
-      
-      container.appendChild(show);
+    // BUILD PAGE (add message if nothing was fetched)
+    if (animes.length > 0) {
+        apiUtil.buildAnimeList(animes, container);
+    } else {
+        const note = document.createElement('p');
+        note.textContent = "Unfortunately, we couldn't fetch any anime to display.";
+        container.appendChild(note);
     }
-  })
+    
+    // Hide loading text
+    loading.style.display = 'none';
+}
+
+window.addEventListener("load", loadPopularAnime);

@@ -1,7 +1,7 @@
 # ANIME INFO
 
 #### Description:
-For INST377 me and my group member @Carter decided to create a web application that provides users the ability to acquire foundational information on variety of anime.
+A web application that provides users the ability to acquire foundational information on variety of anime.
 
 
 ## Deployment
@@ -9,7 +9,6 @@ LINK: https://l3erkt.github.io/AnimeINFO/pages/home.html
 
 
 ## Developers
-
 - [@l3erkt](https://www.github.com/octokatherine)
 - [@smallfrycode](https://github.com/smallfrycode)
 
