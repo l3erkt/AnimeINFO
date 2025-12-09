@@ -16,16 +16,16 @@ async function loadRandomAnime() {
         // console.log("Chosen Rating Array: ", chosenRating);
         const chosenAnime = apiUtil.randomChoice(chosenRating);
         // console.log("Chosen Anime: ", chosenAnime);
-    
         const row1 = document.createElement('section');
         row1.className = 'row-1';
 
-        const header = document.createElement('h1');
-        header.className = 'header';
-        header.textContent = "AnimeInfo Home";
-        const header2 = document.createElement('h2');
-        header2.className = 'header2';
-        header2.textContent = "Chosen Featured Anime";
+        const head = document.createElement('h1')
+        
+        head.className = 'header';
+        head.textContent = "AnimeInfo Home";
+        const subhead = document.createElement('h3')
+        subhead.className = 'subheader';
+        subhead.textContent = "Chosen Featured Anime";
     
         const col1 = document.createElement('div');
         col1.className = 'col-1';
@@ -72,12 +72,11 @@ async function loadRandomAnime() {
         col1.appendChild(animeDuration);
         col1.appendChild(info);
         col1.appendChild(divider);
-        
-        row1.appendChild(header);
-        row1.appendChild(header2);
         row1.appendChild(col1);
         row1.appendChild(cover);
         
+        container.appendChild(head)
+        container.appendChild(subhead)
         container.appendChild(row1);
         
         // Trailer

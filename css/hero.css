@@ -6,6 +6,19 @@ main {
 }
 
 
+.header, .subheader {
+    text-align: center;
+}
+
+.header {
+    font-size: var(--fs-h1);
+    margin-bottom: 50px;
+}
+
+.subheader {
+    font-size: var(--fs-md);
+}
+
 
 .row-1 {
     display: flex;
@@ -99,7 +112,6 @@ main {
     width: 600px;
     height: 400px;
 }
-
 
 
 @media screen and (max-width: 48em) {

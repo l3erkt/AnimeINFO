@@ -39,7 +39,7 @@ async function loadGenres() {
             divider.appendChild(header);
 
             // iterate through each anime in genre
-            for (let j = 0; j < animes.length; j++) {
+            for (let j = 0; j < 1; j++) {
                 apiUtil.buildAnimeList(animes, container);
             }
         }
