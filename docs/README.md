@@ -27,15 +27,15 @@ https://l3erkt.github.io/AnimeINFO/pages/home.html
 
 ## Developer Manual
 
-#### Installing The Application
+### Installing The Application
+To install this application, you will have to fetch the files through...
 
+### Running The Application On a Server
+In order to run this application on a server...
 
-#### Running The Application On a Server
-
-
-#### APIs Used
+### APIs Used
 There are 2 APIs used in this application which retrieve both information about anime and art.
-##### Jikan
+#### Jikan
 Jikan is used to fetch all information on certain anime shows. There are multiple different types of fetches which you can find listed in the [api_util.js](../js/api_util.js) file. Every link that includes "api.jikan.moe/v4" goes to version 4 of Jikan's API.
 - Basic Fetches
     - animeSearch -> the base fetch link for searching, "?sfw" query to only allow safe for work content
@@ -54,11 +54,34 @@ Jikan is used to fetch all information on certain anime shows. There are multipl
     - animePG -> only grabs anime rated for everyone with parental guidance
     - animePG13 -> only grabs anime rated for 13 or older
     - animeR17 -> only grabs anime rated for 17 or older
-##### Danbooru
+#### Danbooru
 Danbooru is used to fetch anime art and also has multiple different types of fetches listed in the [api_util.js](../js/api_util.js) file.
 - List them here
 
-#### Future Development
+### Future Development
 If you wish to build upon or make changes to this application, here are some things to note.
-##### api_util.js
-This is the main api handler that is used to load data from different API endpoints and dynamically build it to the web app.
+#### api_util.js
+This is the main api handler that is used to load data from different API endpoints and dynamically build it to the web app. It is highly recommended that you use this script for fetching APIs to prevent excess fetch calls.
+- To use api_util.js in another script
+    1. Add this to the top of your script:
+        `import * as apiUtil from "./api_util.js";`
+    2. In any html file that refers to your script, import it as a module:
+        `<script type="module" src="my_script.js"></script>`
+    3. To use any function or variable write "apiUtil." followed by the its name
+        `apiUtil.fetchAnime(([apiUtil.animeG, apiUtil.animePG, apiUtil.animePG13, apiUtil.animeR17]))`
+- If you want to add an API link
+    1. Create a new constant variable in [api_util.js](../js/api_util.js)
+    2. Make sure to include the `export` keyword before you declare your variable. This is to make sure that the variable is public to any scripts that import api_util.js
+- If you want to add a new function
+    1. Create a new function in [api_util.js](../js/api_util.js)
+    2. Include the `export` keyword just like you would when adding an API link
+- DO NOT remove the wait functions in `fetchAnime()`, these are here to prevent excess fetch calls!
+#### Road Map
+There are many things which could be done in order to further build upon this web application. Here are a few ideas moving forward:
+- Further improve Aesthetics
+- Decrease loading time
+    - Load by chunks
+    - Don't load what the user does not see
+- Load a specific anime in more detail when clicked on
+- Add search filters
+- Add sorting
