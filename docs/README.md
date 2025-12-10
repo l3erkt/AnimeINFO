@@ -67,7 +67,7 @@ This is the main api handler that is used to load data from different API endpoi
         `import * as apiUtil from "./api_util.js";`
     2. In any html file that refers to your script, import it as a module:
         `<script type="module" src="my_script.js"></script>`
-    3. To use any function or variable write "apiUtil." followed by the its name
+    3. To use any function or variable write "apiUtil." followed by its name
         `apiUtil.fetchAnime(([apiUtil.animeG, apiUtil.animePG, apiUtil.animePG13, apiUtil.animeR17]))`
 - If you want to add an API link
     1. Create a new constant variable in [api_util.js](../js/api_util.js)
