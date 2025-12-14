@@ -13,8 +13,8 @@ const animeGenres = {
 
 
 async function loadGenres() {
-    const container = document.getElementById('container');
-    container.style.display = "table";
+    const btnContainer = document.getElementById('genre-btn-container');
+    const animeList = document.getElementById('genre-anime-list');
     
     // Show loading text
     const loading = document.getElementById('page-load');
@@ -24,25 +24,62 @@ async function loadGenres() {
 
     if (genres.length > 0) {
         // console.log(genres);
-
+        console.log(genres[0])
         // Iterate through each genre
         for (let i = 0; i < genres.length; i++) {
-            let animes = genres[i];
 
-            const divider = document.createElement('div');
-            divider.className = "divider";
+            const divider = document.createElement('buttton');
+            divider.className = "genre";
 
             const header = document.createElement('h1');
             header.textContent = Object.keys(animeGenres)[i];
 
-            container.appendChild(divider);
+            btnContainer.appendChild(divider);
             divider.appendChild(header);
-
-            // iterate through each anime in genre
-            for (let j = 0; j < 1; j++) {
-                apiUtil.buildAnimeList(animes, container);
-            }
         }
+
+        btnContainer.addEventListener('click', (e) => {
+            e.preventDefault();
+            const g = e.target.textContent
+            console.log(e.target.textContent)
+
+            if (g === "Action"){
+                animeList.innerHTML = '';
+                apiUtil.buildAnimeList(genres[0], animeList);
+            }
+            if (g === "Adventure"){
+                animeList.innerHTML = '';
+                apiUtil.buildAnimeList(genres[1], animeList);
+            }
+            if (g === "Comedy"){
+                animeList.innerHTML = '';
+                apiUtil.buildAnimeList(genres[2], animeList);
+            }
+            if (g === "Mystery"){
+                animeList.innerHTML = '';
+                apiUtil.buildAnimeList(genres[3], animeList);
+            }
+            if (g === "Fantasy"){
+                animeList.innerHTML = '';
+                apiUtil.buildAnimeList(genres[4], animeList);
+            }
+            if (g === "Horror"){
+                animeList.innerHTML = '';
+                apiUtil.buildAnimeList(genres[5], animeList);
+            }
+            if (g === "Sports"){
+                animeList.innerHTML = '';
+                apiUtil.buildAnimeList(genres[6], animeList);
+            }
+            if (g === "Slice of Life"){
+                animeList.innerHTML = '';
+                apiUtil.buildAnimeList(genres[7], animeList);
+            }
+            
+        })
+
+
+    /*  */
     } else {
         const note = document.createElement('p');
         note.textContent = "Unfortunately, we couldn't fetch any anime to display.";
