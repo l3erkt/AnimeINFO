@@ -19,7 +19,16 @@ export const animeR17 = `https://api.jikan.moe/v4/anime?rating=${encodeURICompon
 
 
 // API KEY LINKS (PRIVATE)
-import * as apiKeys from "./api_keys.js";
+async function importKeys() {
+    let apiKeys;
+    try {
+        apiKeys = await import("./api_keys.js");
+        console.log("Successfully fetched API keys.");
+    } catch (error) {
+        console.log("API keys are not available, some API endpoints may not work.");
+    }
+    return apiKeys;
+}
 
 
 // HELPER FUNCTIONS
@@ -45,6 +54,7 @@ export function findOGArt(variants, size="original") {
 }
 
 export async function fetchArt(query="") {
+    let apiKeys = await importKeys();
     let key = "";
     key = (query) ?
         apiKeys.danbooruBase + "&tags=" + query.toLowerCase(): // add query if there is one
