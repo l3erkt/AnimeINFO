@@ -1,17 +1,16 @@
 // APIS
-
 export const animeSearch = `https://api.jikan.moe/v4/anime?sfw=${encodeURIComponent(true)}`;
 
 export const topAnime = `https://api.jikan.moe/v4/top/anime`;
 
-export const actionAnime = `https://api.jikan.moe/v4/anime?genres=${encodeURIComponent("1")}`
-export const adventureAnime = `https://api.jikan.moe/v4/anime?genres=${encodeURIComponent("2")}`
-export const comedyAnime = `https://api.jikan.moe/v4/anime?genres=${encodeURIComponent("4")}`
-export const mysteryAnime = `https://api.jikan.moe/v4/anime?genres=${encodeURIComponent("7")}`
-export const fantasyAnime = `https://api.jikan.moe/v4/anime?genres=${encodeURIComponent("10")}`
-export const horrorAnime = `https://api.jikan.moe/v4/anime?genres=${encodeURIComponent("14")}`
-export const sportsAnime = `https://api.jikan.moe/v4/anime?genres=${encodeURIComponent("30")}`
-export const sliceOfLifeAnime = `https://api.jikan.moe/v4/anime?genres=${encodeURIComponent("36")}`
+export const actionAnime = `https://api.jikan.moe/v4/anime?genres=${encodeURIComponent("1")}`;
+export const adventureAnime = `https://api.jikan.moe/v4/anime?genres=${encodeURIComponent("2")}`;
+export const comedyAnime = `https://api.jikan.moe/v4/anime?genres=${encodeURIComponent("4")}`;
+export const mysteryAnime = `https://api.jikan.moe/v4/anime?genres=${encodeURIComponent("7")}`;
+export const fantasyAnime = `https://api.jikan.moe/v4/anime?genres=${encodeURIComponent("10")}`;
+export const horrorAnime = `https://api.jikan.moe/v4/anime?genres=${encodeURIComponent("14")}`;
+export const sportsAnime = `https://api.jikan.moe/v4/anime?genres=${encodeURIComponent("30")}`;
+export const sliceOfLifeAnime = `https://api.jikan.moe/v4/anime?genres=${encodeURIComponent("36")}`;
 
 export const animeG = `https://api.jikan.moe/v4/anime?rating=${encodeURIComponent("g")}`;
 export const animePG = `https://api.jikan.moe/v4/anime?rating=${encodeURIComponent("pg")}`;
@@ -19,9 +18,11 @@ export const animePG13 = `https://api.jikan.moe/v4/anime?rating=${encodeURICompo
 export const animeR17 = `https://api.jikan.moe/v4/anime?rating=${encodeURIComponent("r17")}`;
 
 
+// API KEY LINKS (PRIVATE)
+import * as apiKeys from "./api_keys.js";
+
 
 // HELPER FUNCTIONS
-
 export function getRandomInt(max) {
     return Math.floor(Math.random() * max);
 }
@@ -35,6 +36,30 @@ export async function wait(seconds) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
+export function findOGArt(variants, size="original") {
+    for (let i = 0; i < variants.length; i++) {
+        if (variants[i].type == size) {
+            return variants[i].url;
+        }
+    }
+}
+
+export async function fetchArt(query="") {
+    let key = "";
+    key = (query) ?
+        apiKeys.danbooruBase + "&tags=" + query.toLowerCase(): // add query if there is one
+        apiKeys.danbooruBase; // go with the default index if no query
+
+    console.log(key);
+    // wrap in try catch to handle errors
+    try {
+        const response = await fetch(key);
+        const animeData = await response.json();
+        return animeData;
+    } catch (error) {
+        console.error(`Unable to fetch ${animeData[i]} data: `, error);
+    }
+}
 
 // FETCH FUNCTION
 export async function fetchAnime(animes) {
@@ -50,6 +75,7 @@ export async function fetchAnime(animes) {
         try {
             const response = await fetch(animes[i]);
             const animeData = await response.json();
+            console.log(animeData);
             animeResults.push(animeData.data);
         } catch (error) {
             console.error(`Unable to fetch ${animeData[i]} data: `, error);
@@ -65,7 +91,6 @@ export async function fetchAnime(animes) {
 
 
 // HTML FUNCTIONS
-
 export function createTitle(text) {
     const title = document.createElement('h3');
     title.className = 'title';
@@ -184,7 +209,6 @@ export function createTrailer(embed_url) {
 
 
 // BUILD FUNCTIONS
-
 export function buildAnimeList(animes, container) {
     for (let i = 0; i < animes.length; i++) {
         const show = document.createElement('div');
@@ -215,5 +239,17 @@ export function buildAnimeList(animes, container) {
         show.appendChild(showInfo);
         
         container.appendChild(show);
+    }
+}
+
+export function buildGallery(art, container) {
+    for (let i = 0; i < art.length; i++) {
+        const artBlock = document.createElement("div");
+        artBlock.className = "art";
+
+        const img = createCover(findOGArt(art[i].media_asset.variants, "180x180"));
+        
+        artBlock.appendChild(img);
+        container.appendChild(artBlock);
     }
 }
