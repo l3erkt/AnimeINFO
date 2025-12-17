@@ -6,12 +6,12 @@
     <link rel="icon" type="" href="https://img.icons8.com/?size=100&id=EFxDjlQr0y7b&format=png&color=000000">
     <link rel="stylesheet" href="../css/base.css">
     <link rel="stylesheet" href="../css/components.css">
-    <link rel="stylesheet" href="../css/anime_box.css">
+    <link rel="stylesheet" href="../css/hero.css">
     <script src="../js/search.js"></script>
-    <script type="module" src="../js/load_search.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/annyang/2.6.1/annyang.min.js"></script>
     <script src="../js/load_settings.js"></script>
-    <title>AnimeInfo | Search</title>
+    <script src="../js/settings.js"></script>
+    <title>AnimeInfo | Settings</title>
 </head>
 <body>
     <header>
@@ -36,15 +36,42 @@
     </header>
 
 
-    <div id="page-load" class="loading ">
-        <img src="https://i.pinimg.com/originals/1e/db/f1/1edbf144909f2bbfcff412393422984c.gif" alt="">
-        <h3>Loading...</h3>
-    </div>
-    <section id="searchy">
-        <main id="container">
-
-        </main>
-    </section>
+    <main>
+        <h1>Settings</h1>
+        <div id="voice">
+            <p>Enable Voice Commands</p>
+            <button id="listening">Voice Commands (Off)</button>
+            <div id="voice_commands">
+                <h3>Commands:</h3>
+                <b>Navigate To ...</b>
+                <p>This will navigate you to a page of your choice.</p>
+                <li>
+                    <ul>Home</ul>
+                    <ul>Popular</ul>
+                    <ul>Genre</ul>
+                    <ul>Settings</ul>
+                    <ul>Help</ul>
+                    <ul>About</ul>
+                    <ul>Copyright</ul>
+                </li>
+            </div>
+        </div>
+        <div id="aesthetics">
+            <p>Aesthetics settings</p>
+            <select name="fonts" id="fonts">
+                <option value="Poppins">Poppins (Default)</option>
+                <option value="Courier">Courier</option>
+                <option value="Franklin Gothic">Franklin Gothic</option>
+                <option value="Grill Sans">Grill Sans</option>
+                <option value="Lucida Sans">Lucida Sans</option>
+                <option value="Segoe UI">Segoe UI</option>
+                <option value="Times New Roman">Times New Roman</option>
+                <option value="Impact">Impact</option>
+                <option value="Verdana">Verdana</option>
+            </select>
+            <button id="change_font">Change Font</button>
+        </div>
+    </main>
 
 
     <footer>

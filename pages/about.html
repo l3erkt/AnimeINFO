@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="../css/about.css">
     <script type="module" src="../js/art.js"></script>
     <script src="../js/search.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/annyang/2.6.1/annyang.min.js"></script>
+    <script src="../js/load_settings.js"></script>
     <title>AnimeInfo | About</title>
 </head>
 <body>
@@ -37,17 +39,32 @@
     
 
     <div id="main_content" class="about-us">
-        <h1 class="about-h1">About Us</h1>
-        <p class="about-text">Some paragraph of text here.</p><br>
-        <img class="about-img" src="../images/rimuru_unamused.png" height="150px" width="150px" alt="Image of [insert anime character name here]">
-        <div id="gallery"></div>
+        <div id="info">
+            <h1 class="about-h1">About Us</h1>
+            <br>
+            <p class="about-text">
+                A web application that provides users the ability to acquire foundational information on a
+                variety of anime. Users are greeted with a random featured anime on the home page and can
+                navigate around to look for any shows that meet their preferences. This web application
+                includes a genres section, which lists a ton of featured anime associated with their genre.
+                There is also a popular anime page which shows some of the most popular anime to this day.
+                If there is a specific anime that someone wants to look for, they can use the search bar
+                on the top right corner as well.
+            </p>
+            <br>
+        </div>
+        <!-- <img class="about-img" src="../images/rimuru_unamused.png" height="150px" width="150px" alt="Image of [insert anime character name here]"> -->
+        <div id="featured-art">
+            <h3>Featured Art (Rimuru Tempest):</h3><br>
+            <div id="gallery"></div>
+        </div>
     </div>
 
 
     <footer>
          <ul class="footer-links">
             <li><a href="../pages/help.html">Help/FAQ</a></li>
-            <li><a href="../pages/feedback.html">Feedback</a></li>
+            <li><a href="../pages/settings.html">Settings</a></li>
             <li><a href="../pages/copyright.html">&copy; 2025 AnimeInfo</a></li>
         </ul>
     </footer>

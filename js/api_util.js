@@ -53,6 +53,12 @@ export function findOGArt(variants, size="original") {
     }
 }
 
+
+// FETCH FUNCTIONS
+export async function fetchRandomArt(query="") {
+    return randomChoice(await fetchArt(query));
+}
+
 export async function fetchArt(query="") {
     let apiKeys = await importKeys();
     let key = "";
@@ -71,7 +77,6 @@ export async function fetchArt(query="") {
     }
 }
 
-// FETCH FUNCTION
 export async function fetchAnime(animes) {
     let animeResults = [];
 
