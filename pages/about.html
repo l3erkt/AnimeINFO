@@ -7,10 +7,17 @@
     <link rel="stylesheet" href="../css/base.css">
     <link rel="stylesheet" href="../css/components.css">
     <link rel="stylesheet" href="../css/about.css">
-    <script type="module" src="../js/art.js"></script>
     <script src="../js/search.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/annyang/2.6.1/annyang.min.js"></script>
     <script src="../js/load_settings.js"></script>
+    <script type="module">
+        import * as apiUtil from "../js/api_util.js";
+        window.addEventListener("load", async function() {
+            const container = document.getElementById("gallery");
+            let result = await apiUtil.fetchArt("9043596", true); // numbers are id for rimuru art
+            apiUtil.buildGallery([result], container, "180x180");
+        });
+    </script>
     <title>AnimeInfo | About</title>
 </head>
 <body>
@@ -22,7 +29,7 @@
                 <li><a href="../pages/popular.html">Popular Anime</a></li>
                 <li><a href="../pages/genre.html">Genres</a></li>
                 <li><a href="../pages/about.html">About Us</a></li>
-                <li><a href="../pages/help.html">Help</a></li>
+                <li><a href="../pages/gallery.html">Gallery</a></li>
             </ul>
 
             <img src="../images/hamburger.png" alt="burger menu" class="burger-btn">
@@ -53,11 +60,7 @@
             </p>
             <br>
         </div>
-        <!-- <img class="about-img" src="../images/rimuru_unamused.png" height="150px" width="150px" alt="Image of [insert anime character name here]"> -->
-        <div id="featured-art">
-            <h3>Featured Art (Rimuru Tempest):</h3><br>
-            <div id="gallery"></div>
-        </div>
+        <div id="gallery"></div>
     </div>
 
 

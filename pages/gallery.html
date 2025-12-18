@@ -6,14 +6,33 @@
     <link rel="icon" type="" href="https://img.icons8.com/?size=100&id=EFxDjlQr0y7b&format=png&color=000000">
     <link rel="stylesheet" href="../css/base.css">
     <link rel="stylesheet" href="../css/components.css">
-    <link rel="stylesheet" href="../css/hero.css">
+    <link rel="stylesheet" href="../css/gallery.css">
     <script src="../js/search.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/annyang/2.6.1/annyang.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/simple-slider/1.0.0/simpleslider.min.js"></script>
     <script src="../js/load_settings.js"></script>
-    <script src="../js/settings.js"></script>
-    <title>AnimeInfo | Settings</title>
+    <script type="module">
+        import * as apiUtil from "../js/api_util.js";
+
+        async function loadSlider(container) {
+            simpleslider.getSlider({
+                container: container,
+                transitionTime: 1,
+                delay: 5
+            });
+        }
+
+        window.addEventListener("load", async function() {
+            const container = document.getElementById("gallery");
+            let result = await apiUtil.fetchArt();
+            apiUtil.buildGallery(result, container, "720x720", true);
+            await loadSlider(container);
+        });
+    </script>
+    <title>AnimeInfo | About</title>
 </head>
 <body>
+    
     <header>
         <nav>
             <ul class="nav-links">
@@ -35,51 +54,23 @@
         </nav>
     </header>
 
+    
 
-    <main>
-        <h1>Settings</h1>
-        <div id="voice">
-            <p>Enable Voice Commands</p>
-            <button id="listening">Voice Commands (Off)</button>
-            <div id="voice_commands">
-                <h3>Commands:</h3>
-                <b>Navigate To ...</b>
-                <p>This will navigate you to a page of your choice.</p>
-                <li>
-                    <ul>Home</ul>
-                    <ul>Popular</ul>
-                    <ul>Genre</ul>
-                    <ul>Settings</ul>
-                    <ul>Help</ul>
-                    <ul>About</ul>
-                    <ul>Copyright</ul>
-                </li>
-            </div>
-        </div>
-        <div id="aesthetics">
-            <p>Aesthetics settings</p>
-            <select name="fonts" id="fonts">
-                <option value="Poppins">Poppins (Default)</option>
-                <option value="Courier">Courier</option>
-                <option value="Franklin Gothic">Franklin Gothic</option>
-                <option value="Grill Sans">Grill Sans</option>
-                <option value="Lucida Sans">Lucida Sans</option>
-                <option value="Segoe UI">Segoe UI</option>
-                <option value="Times New Roman">Times New Roman</option>
-                <option value="Impact">Impact</option>
-                <option value="Verdana">Verdana</option>
-            </select>
-            <button id="change_font">Change Font</button>
-        </div>
-    </main>
+    <div id="main_content">
+        <h1>Gallery</h1>
+        <h2>Featured Art</h2>
+        <br>
+        <div id="gallery" style="width:600px; height:600px; overflow: hidden;"></div>
+    </div>
 
 
     <footer>
-        <ul class="footer-links">
+         <ul class="footer-links">
             <li><a href="../pages/help.html">Help/FAQ</a></li>
             <li><a href="../pages/settings.html">Settings</a></li>
             <li><a href="../pages/copyright.html">&copy; 2025 AnimeInfo</a></li>
         </ul>
     </footer>
+
 </body>
 </html>

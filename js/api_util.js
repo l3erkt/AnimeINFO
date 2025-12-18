@@ -1,3 +1,5 @@
+import { danbooruKey } from "./api_keys.js";
+
 // APIS
 export const animeSearch = `https://api.jikan.moe/v4/anime?sfw=${encodeURIComponent(true)}`;
 
@@ -16,6 +18,9 @@ export const animeG = `https://api.jikan.moe/v4/anime?rating=${encodeURIComponen
 export const animePG = `https://api.jikan.moe/v4/anime?rating=${encodeURIComponent("pg")}`;
 export const animePG13 = `https://api.jikan.moe/v4/anime?rating=${encodeURIComponent("pg13")}`;
 export const animeR17 = `https://api.jikan.moe/v4/anime?rating=${encodeURIComponent("r17")}`;
+
+
+const danbooruPosts = `https://danbooru.donmai.us/posts`;
 
 
 // API KEY LINKS (PRIVATE)
@@ -45,11 +50,26 @@ export async function wait(seconds) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-export function findOGArt(variants, size="original") {
-    for (let i = 0; i < variants.length; i++) {
-        if (variants[i].type == size) {
-            return variants[i].url;
+export function convertToDate(dateTime) {
+    try {
+        const date = new Date(dateTime);
+        return date.toDateString();
+    } catch (error) {
+        console.log(`Date could not be converted: ${error}`);
+        return dateTime;
+    }
+}
+
+export function findOGArt(artData, size="original") {
+    let variants = artData.media_asset.variants;
+    if (variants) {
+        for (let i = 0; i < variants.length; i++) {
+            if (variants[i].type == size) {
+                return variants[i].url;
+            }
         }
+    } else {
+        return artData.source;
     }
 }
 
@@ -59,14 +79,15 @@ export async function fetchRandomArt(query="") {
     return randomChoice(await fetchArt(query));
 }
 
-export async function fetchArt(query="") {
+export async function fetchArt(query="", single_post=false) {
     let apiKeys = await importKeys();
-    let key = "";
-    key = (query) ?
-        apiKeys.danbooruBase + "&tags=" + query.toLowerCase(): // add query if there is one
-        apiKeys.danbooruBase; // go with the default index if no query
-
-    console.log(key);
+    let baseLink = (single_post) ?
+        danbooruPosts + `/${query}.json` + apiKeys.danbooruKey: 
+        danbooruPosts + `.json/` + apiKeys.danbooruKey;
+    let key = (query) ?
+        baseLink + "&tags=" + query.toLowerCase().replaceAll(" ", "_"): // add query if there is one
+        baseLink; // go with the default index if no query
+        
     // wrap in try catch to handle errors
     try {
         const response = await fetch(key);
@@ -257,14 +278,50 @@ export function buildAnimeList(animes, container) {
     }
 }
 
-export function buildGallery(art, container) {
+export function buildGallery(art, container, art_size="original", show_details=false) {
     for (let i = 0; i < art.length; i++) {
-        const artBlock = document.createElement("div");
-        artBlock.className = "art";
-
-        const img = createCover(findOGArt(art[i].media_asset.variants, "180x180"));
+        const img = createCover(findOGArt(art[i], art_size));
         
-        artBlock.appendChild(img);
-        container.appendChild(artBlock);
+        if (show_details) {
+            const details = {
+                "Artist": (art[i].tag_string_artist) ? art[i].tag_string_artist: "N/A",
+                "Date Created": (art[i].created_at) ? convertToDate(art[i].created_at): "N/A",
+                "Date Updated": (art[i].updated_at) ? convertToDate(art[i].updated_at): "N/A",
+                "Source": (art[i].source) ? art[i].source: "N/A"
+            }
+    
+            const artContainer = document.createElement("div");
+            artContainer.className = "art_container";
+    
+            const coverContainer = document.createElement("div");
+            coverContainer.className = 'cover_container';
+    
+            const infoContainer = document.createElement("div");
+            infoContainer.className = 'info_container';
+            coverContainer.appendChild(img);
+
+            for (const [key, value] of Object.entries(details)) {
+                const para = document.createElement("p");
+                infoContainer.appendChild(para);
+                if (key == "Source") {
+                    para.textContent = `${key}: `;
+                    const link = document.createElement("a");
+                    link.className = "link";
+                    link.href = value
+                    link.textContent = value;
+                    link.target = "_blank";
+                    para.appendChild(link);
+                } else {
+                    para.textContent = `${key}: ${value}`;
+                }
+            }
+    
+            artContainer.appendChild(coverContainer);
+            artContainer.appendChild(document.createElement("br"));
+            artContainer.appendChild(infoContainer);
+            container.appendChild(artContainer);
+        } else {
+            container.appendChild(img);
+        }
     }
 }
