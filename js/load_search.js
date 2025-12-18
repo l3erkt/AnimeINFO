@@ -17,7 +17,6 @@ async function loadSearch() {
     if (animeResults.length > 0) {
         const header = document.createElement("h1");
         header.textContent = `Search Results For: ${inputValue}`;
-
         apiUtil.buildAnimeList(animeResults, container);
     } else {
         const note = document.createElement('p');

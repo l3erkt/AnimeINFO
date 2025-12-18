@@ -16,6 +16,10 @@ function loadAnnyang(enabled) {
             window.location.href = `../pages/${page.toLowerCase()}.html`;
         }
     }
+
+    const searchQuery = function(query) {
+        search(query);
+    }
     
     if (annyang) {
         // Change button
@@ -32,8 +36,8 @@ function loadAnnyang(enabled) {
 
         // Load commands
         const commands = {
-            'hello': () => { alert("hello world"); },
-            'Navigate to *page': function(page) { changePage(page); }
+            'Navigate to *page': function(page) { changePage(page); },
+            'Search for *query': function(query) { searchQuery(query); }
         }
         annyang.addCommands(commands);
     

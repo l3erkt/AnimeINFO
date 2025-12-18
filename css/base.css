@@ -12,7 +12,8 @@
     --fs-logo: 80px;
 
     /* Header */
-    --fs-h1: 2rem;
+    --fs-h1: 3rem;
+    --fs-h2: 1.25rem;
 
     /* Content based sizes */
     --fs-lg: 1.5rem;

@@ -1,21 +1,5 @@
 #main_content {
-    width: 100%;
     height: 80vh;
-    display: flex;
-    text-align: center;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-h1 {
-    font-size: var(--fs-h1);
-    font-weight: 800;
-    color: var(--blue-color);
-}
-
-h2 {
-    font-size: var(--fs-md);
 }
 
 .art_container {
