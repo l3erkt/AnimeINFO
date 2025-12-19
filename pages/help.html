@@ -7,6 +7,12 @@
     <link rel="stylesheet" href="../css/base.css">
     <link rel="stylesheet" href="../css/components.css">
     <link rel="stylesheet" href="../css/center.css">
+    <style>
+        .link {
+            text-decoration: underline;
+            color: var(--blue-color);
+        }
+    </style>
     <script src="../js/search.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/annyang/2.6.1/annyang.min.js"></script>
     <script src="../js/load_settings.js"></script>
@@ -15,7 +21,6 @@
         window.addEventListener("load", async function() {
             const container = document.getElementById("gallery");
             let result = await apiUtil.fetchRandomArt("Kujo Jotaro");
-            console.log(result);
             apiUtil.buildGallery([result], container, "360x360", true);
         });
     </script>
@@ -47,20 +52,20 @@
     <main id="main_content">
         <h1>Help/FAQ</h1>
         <div>
-            <h3>What is Anime?</h3>
+            <h2>What is Anime?</h2>
             <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
         </div>
         <div>
-            <h3>Can I watch anime?</h3>
+            <h2>Can I watch anime?</h2>
             <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
         </div>
         <div>
-            <h3>How can I find anime?</h3>
+            <h2>How can I find anime?</h2>
             <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
         </div>
 
-        <div id="featured-art">
-            <h3>Featured Art (Jotaro):</h3><br>
+        <div id="featured-art" style="margin: 40px;">
+            <h2>Featured Art (Jotaro):</h2><br>
             <div id="gallery"></div>
         </div>
     </main>

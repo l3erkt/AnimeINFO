@@ -2,12 +2,13 @@
     --primary-color: #d9d9d9; /* headers */
     --secondary-color: #b2b2b2; /* paragraphs, navlinks */
 
-    --blue-color: lightskyblue; /* alternative color */
+    --blue-color: #87cefa; /* alternative color */
     --green-color: #00550d; /* Readnow btn */
     --orange-color: #904401; /* Watchnow btn */
 
     --bkg-linear-gradient-primary: linear-gradient(#111315, #202020); /* main background */
     --bkg-secondary-color: #111315;
+    --bkg-box-color: #1e1f21;
 
     --fs-logo: 80px;
 

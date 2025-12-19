@@ -85,7 +85,7 @@ export async function fetchArt(query="", single_post=false) {
         danbooruPosts + `/${query}.json` + apiKeys.danbooruKey: 
         danbooruPosts + `.json/` + apiKeys.danbooruKey;
     let key = (query) ?
-        baseLink + "&tags=" + query.toLowerCase().replaceAll(" ", "_"): // add query if there is one
+        baseLink + "&tags=rating:general " + query.toLowerCase().replaceAll(" ", "_"): // add query if there is one
         baseLink; // go with the default index if no query
         
     // wrap in try catch to handle errors

@@ -30,7 +30,7 @@ nav {
     transition: 0.3s;
 }
 .nav-links a:hover {
-    color: lightskyblue; 
+    color: var(--blue-color); 
     
 }
 
@@ -38,7 +38,7 @@ nav {
 /* Search bar styles */
 
 .src-form{
-    background-color: rgb(30, 31, 33);
+    background-color: var(--bkg-box-color);
     padding: 12px 50px 12px 10px;
     border-radius: 50px;
 }
@@ -55,7 +55,7 @@ nav {
 }
 
 .src-input {
-    background-color: rgb(30, 31, 33);    
+    background-color: var(--bkg-box-color);
     border: none;
     outline: none;
     font-size: var(--fs-sm);

@@ -1,10 +1,20 @@
 .art_container {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
     text-align: center;
-    justify-content: center;
     overflow: hidden;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    margin: 0;
+    width: auto;
+}
+
+#gallery {
+    width: 600px;
+    height: 600px;
 }
 
 .cover_container {
@@ -22,5 +32,5 @@
 
 .link {
     text-decoration: underline;
-    color: cornflowerblue;
+    color: var(--blue-color);
 }

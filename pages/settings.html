@@ -4,6 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="" href="https://img.icons8.com/?size=100&id=EFxDjlQr0y7b&format=png&color=000000">
+    <style>
+        body {
+            height: 100vh;
+        }
+        #main_content {
+            margin-top: 8%;
+        }
+        table, th, td {
+            border: 2px solid var(--primary-color);
+            border-collapse: collapse;
+            padding: 10px;
+            margin: 20px;
+            list-style: none;
+        }
+    </style>
     <link rel="stylesheet" href="../css/base.css">
     <link rel="stylesheet" href="../css/components.css">
     <link rel="stylesheet" href="../css/center.css">
@@ -39,37 +54,99 @@
     <main id="main_content">
         <h1>Settings</h1>
         <div id="voice">
-            <p>Enable Voice Commands</p>
-            <button id="listening">Voice Commands (Off)</button>
+            <h2>Voice Commands</h2>
+            <button id="listening">Turn Off</button>
             <div id="voice_commands">
                 <h3>Commands:</h3>
-                <b>Navigate To ...</b>
-                <p>This will navigate you to a page of your choice.</p>
-                <li>
-                    <ul>Home</ul>
-                    <ul>Popular</ul>
-                    <ul>Genre</ul>
-                    <ul>Settings</ul>
-                    <ul>Help</ul>
-                    <ul>About</ul>
-                    <ul>Copyright</ul>
-                </li>
+                <table>
+                    <tr>
+                        <th>Commands</th>
+                        <th>Description</th>
+                        <th>Options</th>
+                    </tr>
+                    <tr>
+                        <td>Navigate To ...</td>
+                        <td>Navigates you to a page of your choice.</td>
+                        <td>
+                            <li>
+                                <ul>Home</ul>
+                                <ul>Popular</ul>
+                                <ul>Genre</ul>
+                                <ul>Gallery</ul>
+                                <ul>Settings</ul>
+                                <ul>Help</ul>
+                                <ul>About Us</ul>
+                                <ul>Copyright</ul>
+                            </li>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Search for ...</td>
+                        <td>Allows you to search for an anime of your choice.</td>
+                        <td>Any</td>
+                    </tr>
+                    <tr>
+                        <td>Disable Voice Commands</td>
+                        <td>Disables the voice commands and turns off the microphone input.</td>
+                        <td>None</td>
+                    </tr>
+                    <tr>
+                        <td>Change Font To ...</td>
+                        <td>Changes the font displayed on the web application.</td>
+                        <td>
+                            <li>
+                                <ul>Poppins</ul>
+                                <ul>Courier</ul>
+                                <ul>Franklin Gothic</ul>
+                                <ul>Grill Sans</ul>
+                                <ul>Lucida Sans</ul>
+                                <ul>Segoe UI</ul>
+                                <ul>Times New Roman</ul>
+                                <ul>Impact</ul>
+                                <ul>Verdana</ul>
+                            </li>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Change Theme To ...</td>
+                        <td>Changes the theme of the web application.</td>
+                        <td>
+                            <li>
+                                <ul>Dark</ul>
+                                <ul>Light</ul>
+                            </li>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Clear Settings</td>
+                        <td>Resets all of your settings and removes all local data.</td>
+                        <td>None</td>
+                    </tr>
+                </table>
             </div>
         </div>
         <div id="aesthetics">
-            <p>Aesthetics settings</p>
+            <h2>Font Settings</h2>
             <select name="fonts" id="fonts">
-                <option value="Poppins">Poppins (Default)</option>
-                <option value="Courier">Courier</option>
-                <option value="Franklin Gothic">Franklin Gothic</option>
-                <option value="Grill Sans">Grill Sans</option>
-                <option value="Lucida Sans">Lucida Sans</option>
-                <option value="Segoe UI">Segoe UI</option>
-                <option value="Times New Roman">Times New Roman</option>
-                <option value="Impact">Impact</option>
-                <option value="Verdana">Verdana</option>
+                <option value="poppins">Poppins (Default)</option>
+                <option value="courier">Courier</option>
+                <option value="franklin gothic">Franklin Gothic</option>
+                <option value="grill sans">Grill Sans</option>
+                <option value="lucida sans">Lucida Sans</option>
+                <option value="segoe ui">Segoe UI</option>
+                <option value="times new roman">Times New Roman</option>
+                <option value="impact">Impact</option>
+                <option value="verdana">Verdana</option>
             </select>
             <button id="change_font">Change Font</button>
+            <h2>Theme Settings</h2>
+            <select name="theme" id="theme">
+                <option value="dark">Dark Mode (Default)</option>
+                <option value="light">Light Mode</option>
+            </select>
+            <button id="change_theme">Change Theme</button>
+            <br><br>
+            <button id="clear">Clear Settings</button>
         </div>
     </main>
 
