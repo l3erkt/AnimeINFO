@@ -1,0 +1,38 @@
+body {
+    height: 100vh;
+
+}
+#container {
+    padding: 5rem;
+    text-align: center;
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+
+
+}
+
+table, th, td {
+    border: 2px solid var(--primary-color);
+    border-collapse: collapse;
+    padding: 10px;
+    margin: 20px;
+    list-style: none;
+}
+
+h1 {
+    font-size: var(--fs-h1);
+    font-weight: 800;
+    color: var(--blue-color);
+}
+
+h2 {
+    font-size: var(--fs-h2);
+}
+
+p {
+    font-size: var(--fs-md);
+}

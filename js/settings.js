@@ -19,3 +19,8 @@ function loadVoiceButtons() {
 }
 
 window.addEventListener("load", loadVoiceButtons);
+
+
+async function loadUserData(){
+    console.log("Working on loading user data");
+}

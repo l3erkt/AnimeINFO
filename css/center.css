@@ -22,3 +22,10 @@ h2 {
 p {
     font-size: var(--fs-md);
 }
+
+
+.cover_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

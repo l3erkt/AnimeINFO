@@ -111,7 +111,7 @@ export async function fetchAnime(animes) {
         try {
             const response = await fetch(animes[i]);
             const animeData = await response.json();
-            console.log(animeData);
+            
             animeResults.push(animeData.data);
         } catch (error) {
             console.error(`Unable to fetch ${animeData[i]} data: `, error);

@@ -24,7 +24,6 @@ async function loadGenres() {
 
     if (genres.length > 0) {
         // console.log(genres);
-        console.log(genres[0])
         // Iterate through each genre
         for (let i = 0; i < genres.length; i++) {
 
@@ -41,7 +40,6 @@ async function loadGenres() {
         btnContainer.addEventListener('click', (e) => {
             e.preventDefault();
             const g = e.target.textContent
-            console.log(e.target.textContent)
 
             if (g === "Action"){
                 animeList.innerHTML = '';

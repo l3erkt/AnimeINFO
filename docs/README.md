@@ -18,7 +18,7 @@ https://l3erkt.github.io/AnimeINFO/pages/home.html
 
 
 ### Developers
-- [@l3erkt](https://www.github.com/octokatherine)
+- [@l3erkt](https://github.com/l3erkt)
 - [@smallfrycode](https://github.com/smallfrycode)
 
 
