@@ -1,4 +1,6 @@
-import { danbooruKey } from "./api_keys.js";
+const danbooruKey = import.meta.env.VITE_DANBOORU_KEY;
+
+
 
 // APIS
 export const animeSearch = `https://api.jikan.moe/v4/anime?sfw=${encodeURIComponent(true)}`;
@@ -22,18 +24,6 @@ export const animeR17 = `https://api.jikan.moe/v4/anime?rating=${encodeURICompon
 
 const danbooruPosts = `https://danbooru.donmai.us/posts`;
 
-
-// API KEY LINKS (PRIVATE)
-async function importKeys() {
-    let apiKeys;
-    try {
-        apiKeys = await import("./api_keys.js");
-        console.log("Successfully fetched API keys.");
-    } catch (error) {
-        console.log("API keys are not available, some API endpoints may not work.");
-    }
-    return apiKeys;
-}
 
 
 // HELPER FUNCTIONS
@@ -79,22 +69,21 @@ export async function fetchRandomArt(query="") {
     return randomChoice(await fetchArt(query));
 }
 
-export async function fetchArt(query="", single_post=false) {
-    let apiKeys = await importKeys();
-    let baseLink = (single_post) ?
-        danbooruPosts + `/${query}.json` + apiKeys.danbooruKey: 
-        danbooruPosts + `.json/` + apiKeys.danbooruKey;
-    let key = (query) ?
-        baseLink + "&tags=rating:general " + query.toLowerCase().replaceAll(" ", "_"): // add query if there is one
-        baseLink; // go with the default index if no query
-        
-    // wrap in try catch to handle errors
+export async function fetchArt(query = "", single_post = false) {
+    const baseLink = single_post
+        ? `${danbooruPosts}/${query}.json${danbooruKey}`
+        : `${danbooruPosts}.json${danbooruKey}`;
+
+    const url = query
+        ? `${baseLink}&tags=rating:general ${query.toLowerCase().replaceAll(" ", "_")}`
+        : baseLink;
+
     try {
-        const response = await fetch(key);
-        const animeData = await response.json();
-        return animeData;
+        const response = await fetch(url);
+        return await response.json();
     } catch (error) {
-        console.error(`Unable to fetch ${animeData[i]} data: `, error);
+        console.error("Danbooru fetch failed:", error);
+        return [];
     }
 }
 
