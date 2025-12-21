@@ -1,4 +1,4 @@
-// const danbooruKey = import.meta.env.VITE_DANBOORU_KEY;
+const danbooruKey = import.meta.env.VITE_DANBOORU_KEY;
 
 
 
