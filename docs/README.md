@@ -14,7 +14,7 @@ A web application that provides users the ability to acquire foundational inform
     - a web browser made by Microsoft
 
 #### Deployment
-https://l3erkt.github.io/AnimeINFO/pages/home.html
+https://anime-info-iota.vercel.app/pages/home.html
 
 
 ### Developers
@@ -30,8 +30,12 @@ https://l3erkt.github.io/AnimeINFO/pages/home.html
 ### Installing The Application
 To install this application, you will have to fetch the files through...
 
+git clone <https://github.com/l3erkt/AnimeINFO.git>
+
+
 ### Running The Application On a Server
 In order to run this application on a server...
+
 
 ### APIs Used
 There are 2 APIs used in this application which retrieve both information about anime and art.
@@ -57,6 +61,30 @@ Jikan is used to fetch all information on certain anime shows. There are multipl
 #### Danbooru
 Danbooru is used to fetch anime art and also has multiple different types of fetches listed in the [api_util.js](../js/api_util.js) file.
 - List them here
+
+Core Danbooru fetch function
+fetchArt(query = "", single_post = false)
+Calls the backend endpoint /api/getDanbooruData
+
+Tag-based searches (tag=${query})
+Single-post fetches (single_post=true/false)
+Returns an array of Danbooru post objects
+
+fetchRandomArt(query = "")
+Wrapper around fetchArt
+Fetches multiple posts and returns one random artwork
+Used for randomized art display (e.g., homepage or featured art)
+
+
+findOGArt(artData, size = "original")
+Extracts the correct image URL from a Danbooru post
+Falls back to artData.source if variants don’t exist
+
+
+                    SUMMARY:
+fetchArt() — fetch Danbooru art by tag or single post
+fetchRandomArt() — fetch a random Danbooru artwork
+findOGArt() — retrieve the correct Danbooru image URL (helper)
 
 ### Future Development
 If you wish to build upon or make changes to this application, here are some things to note.
