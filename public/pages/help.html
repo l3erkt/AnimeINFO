@@ -17,7 +17,7 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/annyang/2.6.1/annyang.min.js"></script>
     <script src="../js/load_settings.js"></script>
     <script type="module">
-        import * as apiUtil from "../js/api_util.js";
+        import * as apiUtil from "../js/api_util.mjs";
         window.addEventListener("load", async function() {
             const container = document.getElementById("gallery");
             let result = await apiUtil.fetchRandomArt("Kujo Jotaro");
