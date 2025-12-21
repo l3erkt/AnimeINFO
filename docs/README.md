@@ -126,9 +126,9 @@ Danbooru is used to fetch anime art, however all art is fetched through the serv
     - "original"
 
 ##### SUMMARY:
-`fetchArt()` — fetch Danbooru art by tag or single post
-`fetchRandomArt()` — fetch a random Danbooru artwork
-`findOGArt()` — retrieve the correct Danbooru image URL (helper)
+- `fetchArt()` — fetch Danbooru art by tag or single post
+- `fetchRandomArt()` — fetch a random Danbooru artwork
+- `findOGArt()` — retrieve the correct Danbooru image URL (helper)
 
 ### Future Development
 If you wish to build upon or make changes to this application, here are some things to note.
