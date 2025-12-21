@@ -1,4 +1,4 @@
-import * as apiUtil from "./api_util.js";
+import * as apiUtil from "./api_util.mjs";
 
 
 async function loadPopularAnime() {
