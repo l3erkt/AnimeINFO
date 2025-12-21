@@ -33,7 +33,7 @@ https://anime-info-iota.vercel.app/pages/home.html
 To install this application, you will have to fetch the files by cloning into the repository.
 
 1. Make sure you have a GitHub account (optional)
-2. Make sure you have Git or install it [Git Install](https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control)
+2. Make sure you have [Git](https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control)
 3. Run the following command to clone the repo
 `git clone <https://github.com/l3erkt/AnimeINFO.git>`
 
