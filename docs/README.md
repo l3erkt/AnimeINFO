@@ -64,7 +64,7 @@ Once node is installed, you will need to create the necessary files to properly 
 
 1. Open Visual Studio Code
 2. Go to the directory you want to work in (GitHub repository)
-3. Go to the package.json file and change the name, directories, and any other information you choose
+3. Go to the [package.json](../package.json) file and change the name, directories, and any other information you choose
 4. Create a `.env` file, so you can test your web app locally
     - These are the environmental variables you made in Vercel
 5. Run the server by typing `node index.js` into your Visual Studio Code terminal
