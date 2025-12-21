@@ -34,8 +34,7 @@ To install this application, you will have to fetch the files by cloning into th
 
 1. Make sure you have a GitHub account (optional)
 2. Make sure you have [Git](https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control)
-3. Run the following command to clone the repo
-`git clone <https://github.com/l3erkt/AnimeINFO.git>`
+3. Run the following command to clone the repository: `git clone <https://github.com/l3erkt/AnimeINFO.git>`
 
 #### Deploying to Vercel
 Once you have the repository cloned to your local machine and have made your changes, you will need to create a Vercel account and deploy your web app.
