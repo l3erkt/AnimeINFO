@@ -30,9 +30,9 @@ https://anime-info-iota.vercel.app/pages/home.html
 ### Installing The Application
 
 #### Cloning The Repository
-To install this application, you will have to fetch the files through by cloning into the repository.
+To install this application, you will have to fetch the files by cloning into the repository.
 
-1. Make sure you have a github account (optional)
+1. Make sure you have a GitHub account (optional)
 2. Make sure you have Git or install it [Git Install](https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control)
 3. Run the following command to clone the repo
 `git clone <https://github.com/l3erkt/AnimeINFO.git>`
@@ -64,7 +64,7 @@ In order to run this application on a server you will need to install nvm and No
 Once node is installed, you will need to create the necessary files to properly run your server.
 
 1. Open Visual Studio Code
-2. Go to the directory you want to work in (github repository)
+2. Go to the directory you want to work in (GitHub repository)
 3. Go to the package.json file and change the name, directories, and any other information you choose
 4. Create a `.env` file, so you can test your web app locally
     - These are the environmental variables you made in Vercel
@@ -96,7 +96,7 @@ Jikan is used to fetch all information on certain anime shows. There are multipl
     - animePG13 -> only grabs anime rated for 13 or older
     - animeR17 -> only grabs anime rated for 17 or older
 #### Danbooru
-Danbooru is used to fetch anime art, however all art is fetched through the server to keep your API key private.
+Danbooru is used to fetch anime art, however all art is fetched through the server to keep your API key private (all art is filtered by the [general rating](https://danbooru.donmai.us/wiki_pages/api%3Aposts#:~:text=rating,s%2C%20q%2C%20e%5D)).
 
 ##### Core Fetch Function
 `fetchArt(query = "", single_post = false)`
