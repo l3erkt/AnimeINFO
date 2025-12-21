@@ -1,7 +1,3 @@
-// const danbooruKey = import.meta.env.VITE_DANBOORU_KEY;
-
-
-
 // APIS
 export const animeSearch = `https://api.jikan.moe/v4/anime?sfw=${encodeURIComponent(true)}`;
 
@@ -67,20 +63,13 @@ export async function fetchRandomArt(query="") {
 }
 
 export async function fetchArt(query = "", single_post = false) {
-    // const baseLink = single_post
-    //     ? `${danbooruPosts}/${query}.json${danbooruKey}`
-    //     : `${danbooruPosts}.json${danbooruKey}`;
-
-    // const url = query
-    //     ? `${baseLink}&tags=rating:general ${query.toLowerCase().replaceAll(" ", "_")}`
-    //     : baseLink;
-
     try {
         const url = `/api/getDanbooruData?tag=${query}&single_post=${single_post}`
         const response = await fetch(url);
-        return await response.json();
+        const artData = await response.json();
+        return artData;
     } catch (error) {
-        console.error("Danbooru fetch failed:", error);
+        console.error("Danbooru fetch failed.");
         return [];
     }
 }

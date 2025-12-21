@@ -39,19 +39,19 @@ app.get('/api/getDanbooruData', async (req, res) => {
         const postsLink = `https://danbooru.donmai.us/posts`;
         const privateKey = process.env.DANBOORU_KEY;
 
-        const baseLink = single_post
+        const baseLink = (single_post == "true")
             ? `${postsLink}/${tag}.json${privateKey}`
             : `${postsLink}.json${privateKey}`;
 
-        const url = tag
+        const url = (tag && (!single_post || single_post == "false"))
             ? `${baseLink}&tags=rating:general ${tag.toLowerCase().replaceAll(" ", "_")}`
             : baseLink;
 
         const response = await fetch(url);
-        return await response.json();
+        const artData = await response.json();
+        res.send(artData);
     } catch(error) {
         console.error("Danbooru fetch failed:", error);
-        return [];
     }
 });
 
