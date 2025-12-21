@@ -33,6 +33,29 @@ app.get('/user', async (req, res) => {
 });
 
 
+app.get('/api/getDanbooruData', async (req, res) => {
+    try {
+        const { tag, single_post } = req.query;
+        const postsLink = `https://danbooru.donmai.us/posts`;
+        const privateKey = process.env.DANBOORU_KEY;
+
+        const baseLink = single_post
+            ? `${postsLink}/${tag}.json${privateKey}`
+            : `${postsLink}.json${privateKey}`;
+
+        const url = tag
+            ? `${baseLink}&tags=rating:general ${tag.toLowerCase().replaceAll(" ", "_")}`
+            : baseLink;
+
+        const response = await fetch(url);
+        return await response.json();
+    } catch(error) {
+        console.error("Danbooru fetch failed:", error);
+        return [];
+    }
+});
+
+
 
 app.post('/user', async (req, res) => {
     console.log('Adding user');

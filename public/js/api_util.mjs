@@ -22,9 +22,6 @@ export const animePG13 = `https://api.jikan.moe/v4/anime?rating=${encodeURICompo
 export const animeR17 = `https://api.jikan.moe/v4/anime?rating=${encodeURIComponent("r17")}`;
 
 
-const danbooruPosts = `https://danbooru.donmai.us/posts`;
-
-
 
 // HELPER FUNCTIONS
 export function getRandomInt(max) {
@@ -70,15 +67,16 @@ export async function fetchRandomArt(query="") {
 }
 
 export async function fetchArt(query = "", single_post = false) {
-    const baseLink = single_post
-        ? `${danbooruPosts}/${query}.json${danbooruKey}`
-        : `${danbooruPosts}.json${danbooruKey}`;
+    // const baseLink = single_post
+    //     ? `${danbooruPosts}/${query}.json${danbooruKey}`
+    //     : `${danbooruPosts}.json${danbooruKey}`;
 
-    const url = query
-        ? `${baseLink}&tags=rating:general ${query.toLowerCase().replaceAll(" ", "_")}`
-        : baseLink;
+    // const url = query
+    //     ? `${baseLink}&tags=rating:general ${query.toLowerCase().replaceAll(" ", "_")}`
+    //     : baseLink;
 
     try {
+        const url = `/api/getDanbooruData?tag=${query}&single_post=${single_post}`
         const response = await fetch(url);
         return await response.json();
     } catch (error) {
